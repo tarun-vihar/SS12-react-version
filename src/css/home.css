@@ -1,0 +1,89 @@
+/* .container {
+  border: 3px solid lightgrey;
+  height: 100vh;
+  position: relative;
+}
+
+.images {
+  max-width: 6rem;
+  height: 6rem;
+}
+
+.media_body {
+  margin-top: 0;
+  padding: 0.5rem;
+  padding-top: 0.1rem;
+}
+
+.building_title {
+  margin-top: 0;
+}
+
+.button_box {
+  height: 20;
+  width: 100%;
+  display: flex;
+  padding: 0rem;
+  border: 0;
+  box-shadow: 0 4px 0 rgb(180, 180, 180);
+  margin-bottom: 0.2rem;
+}
+
+button:hover {
+  background-color: rgb(182, 182, 182);
+}
+
+button:active {
+  background-color: rgb(141, 141, 141);
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 2em;
+  float: left;
+  margin: 0;
+}
+
+.plus {
+  width: 4rem;
+  height: 4rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+@media screen and (min-width: 821px) {
+  .container {
+    margin: auto;
+    width: 40rem;
+  }
+
+  .images {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .button_box {
+    height: 7rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .plus {
+    width: 4rem;
+    height: 4rem;
+    bottom: 1rem;
+  }
+} */
