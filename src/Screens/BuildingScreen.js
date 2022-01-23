@@ -58,6 +58,8 @@ function BuildingScreen() {
 
   let groupByObj = groupBy(accessableFeaturesListIn, "name");
 
+  console.log(groupByObj);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -69,19 +71,20 @@ function BuildingScreen() {
     setComment("");
   };
 
+  const average = (array) =>
+    array.reduce((total, { rating }) => total + Number(rating), 0) /
+    array.length;
+
+  let avgRating = average(building.reviews);
+
+  building = { ...building, avgRating };
+
+  console.log(avgRating);
   console.log(floor);
   return (
     <div>
-      {/* <Link to="/" className="btn btn-light my-3">
-        Back
-      </Link> */}
       <div>
         <Row>
-          {/* <Col md={3}>
-            {" "}
-            <Image src={building.image_url} alt={building.name} fluid />
-          </Col> */}
-
           <Col md={4}>
             {" "}
             <Row>
@@ -91,23 +94,23 @@ function BuildingScreen() {
                     <h3> {building.name}</h3>
                   </ListGroup.Item>
 
-                  <ListGroup.Item>
+                  {/* <ListGroup.Item>
                     {" "}
                     Description : <b> {building.description} </b>{" "}
+                  </ListGroup.Item> */}
+
+                  <ListGroup.Item>
+                    Operating Hours :<b> {building.operating_hours} </b>
                   </ListGroup.Item>
 
                   <ListGroup.Item>
-                    Operating Hours :<b> {building.operatingHrs} </b>
-                  </ListGroup.Item>
-
-                  <ListGroup.Item>
-                    Contact Details : <b> {building.contact}</b>
+                    Nearest Parking Lot : <b> {building.lot}</b>
                   </ListGroup.Item>
 
                   <ListGroup.Item>
                     <Rating
-                      value={building.rating}
-                      text={`${building.numReviews} reviews`}
+                      value={building.avgRating}
+                      text={`${building.reviews.length} reviews`}
                       color="yellow"
                     ></Rating>
                   </ListGroup.Item>
@@ -133,15 +136,13 @@ function BuildingScreen() {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Number of Elevators =
-                    {!!groupByObj["elevators"]
-                      ? groupByObj["elevators"].length
+                    {!!groupByObj["elevator"]
+                      ? groupByObj["elevator"].length
                       : 0}
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Number of Stairs =
-                    {!!groupByObj["elevators"]
-                      ? groupByObj["elevators"].length
-                      : 0}
+                    {!!groupByObj["stairs"] ? groupByObj["stairs"].length : 0}
                   </ListGroup.Item>
                 </ListGroup>
               </Col>
@@ -162,7 +163,7 @@ function BuildingScreen() {
                   </option>
                 ))}
               </Form.Control>
-              <Col md={12}>
+              <Col md={12} className="my-3">
                 <Image src={floor.image} alt={floor.name} fluid />
               </Col>
             </Row>

@@ -4,30 +4,16 @@ import { Link } from "react-router-dom";
 
 import Rating from "../Component/Rating";
 
-// import "../css/home.css";
-
 function Building({ building }) {
+  const average = (array) =>
+    array.reduce((total, { rating }) => total + Number(rating), 0) /
+    array.length;
+
+  let avgRating = average(building.reviews);
+
+  building = { ...building, avgRating };
+
   return (
-    // <button className="button_box">
-    //   <img className="images" src={building.image} alt="library"></img>
-    //   <div className="media_body">
-    //     <h2 className="building_title">{building.name}</h2>
-
-    //     <Rating
-    //       value={building.rating}
-    //       text={`${building.numReviews} reviews`}
-    //       color={"yellow"}
-    //     />
-    //     {/* <div className="my-3">
-    //       <Rating
-    //         value={building.rating}
-    //         text={`${building.numReviews} reviews`}
-    //         color={"yellow"}
-    //       />
-    //     </div> */}
-    //   </div>
-    // </button>
-
     <Card className="my-3 py-3 rounded">
       <Link to={`/building/${building._id}`}>
         <Card.Img src={building.image_url}></Card.Img>
@@ -41,11 +27,15 @@ function Building({ building }) {
         <Card.Text as="div">
           <div className="my-3">
             <Rating
-              value={building.rating}
-              text={`${building.numReviews} reviews`}
+              value={building.avgRating}
+              text={`${building.reviews.length} reviews`}
               color={"yellow"}
             />
           </div>
+        </Card.Text>
+
+        <Card.Text as="div">
+          <b> {building.operating_hours}</b>
         </Card.Text>
       </Card.Body>
     </Card>
